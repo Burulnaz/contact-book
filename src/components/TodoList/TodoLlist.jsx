@@ -14,8 +14,8 @@ const TodoLlist = (props) => {
                {item.surname}
                {item.phone}
                {item. mail}
-                {/* {<button onClick={()=>hendleEdit(item)}>edit</button>} 
-                {<button onClick={()=>props.handleDelete(item.id)}>delete</button>} */}
+                {<button >edit</button>} 
+                {<button onClick={()=>props.handleDelete(item.id)}>delete</button>}
             </li>
         ) )}
     </div>

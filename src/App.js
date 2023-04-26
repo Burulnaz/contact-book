@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddTodo from './components/AddTodo/AddTodo'
+import EditTodo from './components/EditTodo/EditTodo';
 import TodoLlist from './components/TodoList/TodoLlist'
 
 
@@ -13,6 +14,14 @@ const App = () => {
     newContact.push(newObj)
     setTodos(newContact);
   }
+
+  const handleDelete = (id) => {
+    let newTodos = todos.filter((item)=>item.id !==id);
+    setTodos(newTodos) 
+  };
+
+
+  
 
   const handleEdit = (taskToEdit) => {
     setModal(true)
@@ -36,8 +45,9 @@ const App = () => {
   
   return (
     <div>
-      <AddTodo editTodo={editTodo} handleSaveTask={hendleSaveTask} hendeleCont={hendeleCont}/>
-      <TodoLlist todos={todos} hendeleCont={hendeleCont}/>
+      <AddTodo editTodo={editTodo}  hendeleCont={hendeleCont}/>
+      <TodoLlist todos={todos} hendeleCont={hendeleCont} handleEdit={handleEdit} handleDelete={handleDelete}/>
+      {modal ? <EditTodo editTodo={editTodo} handleCloseModal={handleCloseModal} handleSaveTask={hendleSaveTask}/> : null }
     </div>
   )
 }
